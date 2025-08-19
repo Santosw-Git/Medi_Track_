@@ -35,10 +35,7 @@ export default function Home() {
         <h1 className="text-5xl font-bold mb-4 drop-shadow-lg">
           Your No. 1 Trusted Medical Facility
         </h1>
-        <p className="text-xl mb-8 max-w-2xl drop-shadow-md">
-          Providing world-class healthcare services with compassion, innovation, 
-          and trust — because your health is our top priority.
-        </p>
+        
       </div>
     </div>
   );
