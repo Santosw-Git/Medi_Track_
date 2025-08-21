@@ -1,10 +1,9 @@
 // server/routes/appointment.route.js
 import { Router } from 'express';
-import { createAppointment, listAppointments, updateAppointment } from '../controllers/appointment.controller.js';
+import { createAppointment, listAppointments, } from '../controllers/appointment.controller.js';
 
 const appointmentRoutes = Router();
 appointmentRoutes.post('/', createAppointment);
-appointmentRoutes.get('/', listAppointments);
-appointmentRoutes.put('/:id', updateAppointment);
+appointmentRoutes.post('/list-appointments', listAppointments);
 
 export default appointmentRoutes;
