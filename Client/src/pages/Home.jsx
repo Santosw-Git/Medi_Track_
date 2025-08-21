@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import hospitalImage from "../assets/hospital.jpg";
+import home from "../assets/home.jpg";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen">
       <img
-        src={hospitalImage}
+        src={home}
         alt="Hospital"
         className="absolute inset-0 w-full h-full object-cover opacity-70"
       />
@@ -14,16 +14,12 @@ export default function Home() {
 
       <nav className="absolute top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-6">
         <div className="text-2xl font-bold text-white tracking-wide drop-shadow-lg">
-          MediTrack
+          Welcome
         </div>
         <div className="flex space-x-4">
-          <Link to="/adminlogin">
-            <button className="px-5 py-2 rounded-lg bg-gradient-to-r from-blue-300 to-blue-200 text-blue-900 font-semibold shadow hover:from-blue-400 hover:to-blue-300 transition">
-              Admin Login
-            </button>
-          </Link>
+  
           <Link to="/login">
-            <button className="px-5 py-2 rounded-lg bg-gradient-to-r from-green-300 to-green-200 text-green-900 font-semibold shadow hover:from-green-400 hover:to-green-300 transition">
+            <button className="px-5 bg-gray-700 hover:bg-gray-800 py-2 rounded-lg text-white-800 font-semibold shadow hover:text-white-900 transition">
             Signup/Login
             </button>
           </Link>

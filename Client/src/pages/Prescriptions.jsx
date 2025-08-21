@@ -1,39 +1,58 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export default function PrescriptionsForm() {
-  const [form, setForm] = useState({
-    patientName: "",
-    doctorName: "",
-    medication: "",
-    notes: ""
-  });
+export default function PrescriptionByEmail() {
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_BASE_URL}/api/v1/prescription`, form);
-      setMessage("Prescription added successfully!");
-      setForm({ patientName: "", doctorName: "", medication: "", notes: "" });
+      const response = await axios.post(`${API_BASE_URL}/api/v1/appointment/list-appointments`, { email });
+
+      if (response.data.success) {
+        console.log("Appointments fetched successfully:", response.data);
+        
+        // Navigate to appointments page with data
+        navigate("/appointments-list", { state: { appointments: response.data.appointments } });
+      } else {
+        setMessage("No appointments found for this email");
+      }
     } catch (err) {
-      setMessage("Failed to add prescription");
+      console.error(err);
+      setMessage("Failed to fetch appointments");
     }
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-6 rounded shadow">
-      <h2 className="text-xl font-bold mb-4">Add Prescription</h2>
-      {message && <div className="mb-4 text-green-600">{message}</div>}
-      <form onSubmit={handleSubmit} className="space-y-3">
-        <input type="text" placeholder="Patient Name" value={form.patientName} onChange={e => setForm({ ...form, patientName: e.target.value })} required className="w-full p-2 border rounded"/>
-        <input type="text" placeholder="Doctor Name" value={form.doctorName} onChange={e => setForm({ ...form, doctorName: e.target.value })} required className="w-full p-2 border rounded"/>
-        <input type="text" placeholder="Medication" value={form.medication} onChange={e => setForm({ ...form, medication: e.target.value })} required className="w-full p-2 border rounded"/>
-        <input type="text" placeholder="Notes" value={form.notes} onChange={e => setForm({ ...form, notes: e.target.value })} className="w-full p-2 border rounded"/>
-        <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Submit</button>
-      </form>
+    <div className="flex items-center justify-center min-h-screen ">
+      <div className="bg-blue-1000 p-10 rounded-2xl shadow-2xl w-full max-w-md text-center">
+        <h2 className="text-3xl font-semibold mb-6 text-white-800">Fetch Prescriptions</h2>
+        {message && <div className="mb-4 text-red-600 font-medium">{message}</div>}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter Patient Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            autoComplete="email"
+            className="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-800"
+          />
+          <button
+            type="submit"
+            className="w-full bg-gray-800 text-white text-xl py-3 rounded-xl font-medium hover:bg-gray-900 transition"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

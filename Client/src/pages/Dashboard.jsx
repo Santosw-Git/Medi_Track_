@@ -2,7 +2,8 @@ import { Routes, Route, Link, useNavigate, useLocation } from "react-router-dom"
 import { useState, useEffect } from "react";
 import Appointments from "./Appointments";
 import Prescriptions from "./Prescriptions";
-import MedicalRecords from "./MedicalRecords";
+import AppointmentSuccess from "./AppointmentSuccess";
+import hosImg from "../assets/hos.jpg"; // ✅ imported image
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -12,7 +13,6 @@ export default function Dashboard() {
   const menuItems = [
     { name: "Appointments", path: "appointments" },
     { name: "Prescriptions", path: "prescriptions" },
-    { name: "Medical Records", path: "records" },
   ];
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function Dashboard() {
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <div className="w-64 bg-gray-800 text-white flex flex-col p-6 shadow-lg">
+      <div className="w-80 bg-gray-800 text-white flex flex-col p-6 shadow-lg">
         <h1 className="text-3xl font-bold mb-8 text-center">Dashboard</h1>
 
         {menuItems.map((item) => (
@@ -40,28 +40,28 @@ export default function Dashboard() {
 
         <button
           onClick={() => navigate("/login")}
-          className="mt-auto py-3 px-4 bg-red-600 rounded-lg hover:bg-red-700 transition"
+          className="mt-auto py-3 px-4 bg-gray-600 rounded-lg hover:bg-gray-700 transition"
         >
           Logout
         </button>
       </div>
 
-      {/* Main Content */}
-      <div className="flex-1 p-10 overflow-auto">
-        <Routes>
-          <Route path="appointments" element={<Appointments />} />
-          <Route path="prescriptions" element={<Prescriptions />} />
-          <Route path="records" element={<MedicalRecords />} />
-          <Route
-            path="*"
-            element={
-              <div className="text-center text-gray-700 text-xl mt-20">
-                Welcome to your Dashboard.<br />
-                Select an option from the sidebar to begin.
-              </div>
-            }
-          />
-        </Routes>
+      {/* Main Content with background */}
+      <div
+        className="flex-1 p-10 overflow-auto relative bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${hosImg})`, // ✅ show image without white overlay
+        }}
+      >
+        {/* Content directly on background */}
+        <div className="relative z-10">
+          <Routes>
+            <Route path="appointments" element={<Appointments />} />
+            <Route path="prescriptions" element={<Prescriptions />} />
+            <Route path="appointment-success" element={<AppointmentSuccess />} />
+            <Route path="*" />
+          </Routes>
+        </div>
       </div>
     </div>
   );
