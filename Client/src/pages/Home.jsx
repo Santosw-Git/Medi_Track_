@@ -26,11 +26,7 @@ export default function Home() {
         </div>
       </nav>
 
-      <div className="relative z-10 flex flex-col items-center justify-center h-screen text-center text-white px-6">
-        <h1 className="text-5xl font-bold mb-4 drop-shadow-lg">
-          Your No. 1 Trusted Medical Facility
-        </h1>
-      </div>
+      
     </div>
   );
 }

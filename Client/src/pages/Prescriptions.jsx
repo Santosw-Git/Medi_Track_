@@ -17,7 +17,6 @@ export default function PrescriptionByEmail() {
       if (response.data.success) {
         console.log("Appointments fetched successfully:", response.data);
         
-        // Navigate to appointments page with data
         navigate("/appointments-list", { state: { appointments: response.data.appointments } });
       } else {
         setMessage("No appointments found for this email");

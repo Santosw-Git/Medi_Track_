@@ -6,14 +6,13 @@ export default function PrescriptionsList() {
   const appointments = location.state?.appointments;
 
   if (!appointments) {
-    navigate("/"); // redirect if no data
+    navigate("/"); 
     return null;
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-100 flex items-center justify-center px-4">
       <div className="w-full max-w-6xl p-8 rounded-2xl shadow-xl">
-        {/* Back button */}
         <div className="flex justify-start mb-6">
           <button
             onClick={() => navigate("/dashboard")}
@@ -23,12 +22,10 @@ export default function PrescriptionsList() {
           </button>
         </div>
 
-        {/* Title */}
         <h2 className="text-3xl font-semibold mb-6 text-gray-800 text-center">
           Appointments
         </h2>
 
-        {/* Table */}
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200 rounded-xl overflow-hidden shadow">
             <thead className="bg-gray-100">

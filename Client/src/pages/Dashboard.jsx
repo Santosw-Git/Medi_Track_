@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Appointments from "./Appointments";
 import Prescriptions from "./Prescriptions";
 import AppointmentSuccess from "./AppointmentSuccess";
-import hosImg from "../assets/hos.jpg"; // ✅ imported image
+import hosImg from "../assets/hos.jpg"; 
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -22,7 +22,6 @@ export default function Dashboard() {
 
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* Sidebar */}
       <div className="w-80 bg-gray-800 text-white flex flex-col p-6 shadow-lg">
         <h1 className="text-3xl font-bold mb-8 text-center">Dashboard</h1>
 
@@ -46,14 +45,12 @@ export default function Dashboard() {
         </button>
       </div>
 
-      {/* Main Content with background */}
       <div
         className="flex-1 p-10 overflow-auto relative bg-cover bg-center"
         style={{
-          backgroundImage: `url(${hosImg})`, // ✅ show image without white overlay
+          backgroundImage: `url(${hosImg})`, 
         }}
       >
-        {/* Content directly on background */}
         <div className="relative z-10">
           <Routes>
             <Route path="appointments" element={<Appointments />} />

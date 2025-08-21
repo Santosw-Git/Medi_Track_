@@ -25,7 +25,6 @@ export default function PatientAuth() {
     setError("");
     try {
       const endpoint = isSignup ? "signup" : "signin";
-      // Remove username from payload if signing in
       const payload = isSignup
         ? form
         : { email: form.email, password: form.password };
