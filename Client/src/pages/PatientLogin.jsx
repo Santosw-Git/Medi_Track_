@@ -30,7 +30,7 @@ export default function PatientAuth() {
         ? form
         : { email: form.email, password: form.password };
       await axios.post(`${API_BASE_URL}/api/v1/patient/${endpoint}`, payload);
-      navigate("/appointment");
+      navigate("/dashboard");
     } catch (err) {
       setError(
         err.response?.data?.message ||

@@ -1,7 +1,6 @@
-// src/pages/adminLogin.jsx
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import hospitalImage from "../assets/image.jpg"; // same as patient login
+import hospitalImage from "../assets/image.jpg"; 
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -18,7 +17,7 @@ export default function AdminLogin() {
     }
     // Mock login
     alert("Admin login successful!");
-    navigate("/admin-dashboard"); // change later to real admin dashboard
+    navigate("/admin-dashboard"); 
   };
 
   return (
