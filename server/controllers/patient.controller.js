@@ -42,6 +42,8 @@ const signupUser = async (req, res) => {
   }
 };
 
+
+
 const signIn = async (req, res) => {
   const { error } = signInSchema.validate(req.body);
   if (error) {
@@ -65,12 +67,7 @@ const signIn = async (req, res) => {
   }
 };
 
-const authWithGoogle = async (req, res) => {
-  try {
-    res.status(200).json({ message: 'Authenticated with Google successfully' });
-  } catch (error) {
-    res.status(500).json({ error: 'Error authenticating with Google', details: error.message });
-  }
-};
 
-export { signupUser, signIn, authWithGoogle };
+
+
+export { signupUser, signIn };

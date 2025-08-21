@@ -1,7 +1,8 @@
 import db from '../db/index.js';
 
-// Create a new appointment
- const createAppointment = async (req, res) => {
+
+
+const createAppointment = async (req, res) => {
   const { name, age, gender, contact, email, department, notes, reason } = req.body;
 
   const sql = `INSERT INTO appointments 
@@ -25,8 +26,8 @@ import db from '../db/index.js';
 
 
 
- const listAppointments = async (req, res) => {
-  const { email } = req.body; // get email from request body
+const listAppointments = async (req, res) => {
+  const { email } = req.body;
   console.log("Fetching appointments for email:", email);
 
   if (!email) {
