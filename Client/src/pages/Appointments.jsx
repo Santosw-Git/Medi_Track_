@@ -31,7 +31,6 @@ export default function Appointments() {
     if (response.data.success) {
       console.log("Appointment booked successfully:", response.data);
       
-      // Navigate to success page only if backend returned success
       navigate("/appointment-success");
     } else {
       setMessage("Failed to book appointment");
@@ -49,7 +48,6 @@ export default function Appointments() {
       {message && <div className="mb-4 text-red-600 text-center">{message}</div>}
       
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* All form fields */}
         <div>
           <label className="block mb-2 text-gray-1200">Name</label>
           <input
